@@ -1,4 +1,4 @@
-exports.generateText = (name, age) => {
+const generateText = (name, age) => {
   // Returns output text
   return `${name} (${age} years old)`;
 };
@@ -10,8 +10,7 @@ exports.createElement = (type, text, className) => {
   newElement.textContent = text;
   return newElement;
 };
-
-exports.validateInput = (text, notEmpty, isNumber) => {
+const validateInput = (text, notEmpty, isNumber) => {
   // Validate user input with two pre-defined rules
   if (!text) {
     return false;
@@ -24,3 +23,17 @@ exports.validateInput = (text, notEmpty, isNumber) => {
   }
   return true;
 };
+
+
+exports.checkAndGenerate = (name, age) => {
+  if (
+    !validateInput(name, true, false) || 
+    !validateInput(age, false, true) 
+    ) {
+      return false;
+    }
+    return generateText(name, age);
+}
+
+exports.generateText = generateText;
+exports.validateInput = validateInput;
